@@ -168,62 +168,26 @@ with tab_projetos:
 
     st.header("Meus Projetos")
 
-    # Estilos CSS
-    st.markdown("""
-        <style>
-            .btn {
-                display: inline-block;
-                padding: 10px 20px;
-                margin-top: 10px;
-                border-radius: 5px;
-                background-color: #007bff;
-                color: white;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            }
-            .btn:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    # Conteúdo dos projetos
-    projects = [
-        {
-            "title": "Dashboard de Acompanhamento de Ações",
-            "image": "assets/Power BI.png",
-            "description": "Objetivo: Criar um dashboard interativo em Power BI para monitorar o desempenho de ações, facilitando a análise e a tomada de decisões de investimento.\n\nDescrição:\n- Coleta de Dados: Importação de dados históricos e em tempo real de preços de ações.\n- Transformação de Dados: Limpeza e preparação dos dados para análise.\n- Visualizações: Desenvolvimento de gráficos e tabelas interativas para acompanhar o desempenho das ações.\n- Análises Avançadas: Implementação de análises preditivas e alertas para mudanças significativas.\n- Compartilhamento: Publicação do dashboard para acesso online e colaboração.\n\nBenefícios: Melhor tomada de decisões de investimento, análise eficiente de dados financeiros e fácil acesso às informações.",
-            "link": "https://app.powerbi.com/view?r=eyJrIjoiZTQyZTE1ODYtZGQ0MS00OTFkLTkwODktYmQyODY3MzkyZWViIiwidCI6IjlhNzU5NGVjLWMxODUtNDIxYS04MmUxLTJlNWJkNDhiZmE3NSJ9"
-        },
-        {
-            "title": "Projeto 2",
-            "image": "assets/Power Apps.png",
-            "description": "Descrição breve do projeto.",
-            "link": "https://app.powerbi.com/view?r=eyJrIjoiZTQyZTE1ODYtZGQ0MS00OTFkLTkwODktYmQyODY3MzkyZWViIiwidCI6IjlhNzU5NGVjLWMxODUtNDIxYS04MmUxLTJlNWJkNDhiZmE3NSJ9"
-        },
-        {
-            "title": "Projeto 3",
-            "image": "assets/streamlit-logo.png",
-            "description": "Descrição breve do projeto.",
-            "link": "https://github.com/DaniloReis617"
-        },
-        {
-            "title": "Projeto 4",
-            "image": "assets/Python.jpeg",
-            "description": "Descrição breve do projeto.",
-            "link": "https://github.com/DaniloReis617"
-        }
-    ]
-
     # Renderização dos projetos
     with st.container():
-        cols = st.columns(4)
-        for i, project in enumerate(projects):
-            with cols[i % 4]:
-                st.image(project['image'], width=200)
-                st.markdown(f"### {project['title']}")
-                st.markdown(f"{project['description']}")
-                st.link_button(f"Ver {project['title']}.", project['link'], type="secondary")
+        col1,col2 = st.columns(2,gap="medium",vertical_alignment="top")
+        with col1:
+            inner_col1, inner_col2, inner_col3 = col1.columns([1.5,7,1.5])
+            with inner_col2:
+                st.image("assets/Power BI.png", width=200)
+            
+            with st.expander("Dashboard de Acompanhamento de Ações",icon=":material/bar_chart_4_bars:"):
+                st.markdown("Objetivo: Criar um dashboard interativo em Power BI para monitorar o desempenho de ações, facilitando a análise e a tomada de decisões de investimento.\n\nDescrição:\n- Coleta de Dados: Importação de dados históricos e em tempo real de preços de ações.\n- Transformação de Dados: Limpeza e preparação dos dados para análise.\n- Visualizações: Desenvolvimento de gráficos e tabelas interativas para acompanhar o desempenho das ações.\n- Análises Avançadas: Implementação de análises preditivas e alertas para mudanças significativas.\n- Compartilhamento: Publicação do dashboard para acesso online e colaboração.\n\nBenefícios: Melhor tomada de decisões de investimento, análise eficiente de dados financeiros e fácil acesso às informações.")
+                st.link_button("Ir para", "https://app.powerbi.com/view?r=eyJrIjoiZTQyZTE1ODYtZGQ0MS00OTFkLTkwODktYmQyODY3MzkyZWViIiwidCI6IjlhNzU5NGVjLWMxODUtNDIxYS04MmUxLTJlNWJkNDhiZmE3NSJ9", type="secondary")
+
+        with col2:
+            inner_col1, inner_col2, inner_col3 = col2.columns([1.5,7,1.5])
+            with inner_col2:
+                st.image("assets/Power Apps.png", width=175)
+
+            with st.expander("Projeto 2",icon=":material/bar_chart_4_bars:"):
+                st.markdown("Descrição breve do projeto.")
+                st.link_button("Ir para", "", type="secondary")
 
 # Conteúdo da aba "Cursos" com sub-abas
 with tab_cursos:
